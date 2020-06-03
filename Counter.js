@@ -7,8 +7,8 @@ class Counter extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log('PREV PROPS ', prevProps);
-    console.log('THIS PROPS ', this.props);
+    // console.log('PREV PROPS ', prevProps);
+    // console.log('THIS PROPS ', this.props);
 
     console.log('THIS PROPS retailToMailContent ', this.props.pageContent);
   }

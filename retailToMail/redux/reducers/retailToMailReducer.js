@@ -10,9 +10,17 @@ import {
 
 export default function retailToMailReducer(state = getDefaultRetailToMailState(), action) {
     let retailToMailState = {...state, ...action};
-    RetailToMailDataManager(action.payload);
+    var retailToMailPageContent = RetailToMailDataManager(action.payload);
+    
     switch (action.type) {
         case FETCH_RETAIL_TO_MAIL_CONTENT_ACTION_TYPE:
+            retailToMailState = {};
+            retailToMailState = {
+                ...retailToMailState,
+                content: {
+                    ...retailToMailPageContent
+                }
+            };
             return retailToMailState;
         default:
             return retailToMailState;

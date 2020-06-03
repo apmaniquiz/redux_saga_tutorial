@@ -1,25 +1,46 @@
-function IconDataManager(input) {
+export function IconDataManager(input) {
     let icons = {};
 
     for (var i=0; i < input.length; i++) {
-        console.log(input[i]);
         var icon = input[i];
         var iconUrl = icon.IconUrl || '';
         var iconTitle = icon.IconTitle || '';
         var iconDesc = icon.IconDescription || '';
-        var iconKey = icon.IconTitle.replace(/\s/g, "_");
+        var iconName = icon.IconTitle.replace(/\s/g, "_");
 
-        icons[iconKey] = {
+        icons['icon_' + i] = {
             iconUrl,
             iconTitle,
-            iconDesc
+            iconDesc,
+            iconName
         };
     }
     
     return icons;
 }
 
-function GreetingsDataManager(input) {
+export function TestimonialDetailsDataManager(input) {
+    let testimonies = {};
+
+    for (var i=0; i < input.length; i++) {
+        var testimony = input[i];
+        var testimonyTitle = testimony.testimonyTitle || '';
+        var testimonyDesc = testimony.testimonyDescription || '';
+        var testimonyAuthor = testimony.testimonyAuthor || '';
+        var testimonyName = testimony.testimonyTitle.replace(/\s/g, "_");
+
+        testimonies['testimony_' + i] = {
+            testimonyTitle,
+            testimonyDesc,
+            testimonyAuthor,
+            testimonyName
+        };
+    }
+    
+    return testimonies;
+}
+
+export function GreetingsDataManager(input) {
     let returnObj = {};
     let keys = ['title', 'subtitle', 'description', 'backgroundImage', 'icons'];
 
@@ -27,7 +48,7 @@ function GreetingsDataManager(input) {
         if (input[key] && key === 'icons') {
             let val = input[key];
             
-            returnObj[key] = IconDataManager(val);
+            returnObj['icons'] = IconDataManager(val);
         } else if (input[key]) {
             returnObj[key] = input[key];
         }
@@ -36,7 +57,7 @@ function GreetingsDataManager(input) {
     return returnObj;
 }
 
-function SaveMoneyDataManager(input) {
+export function SaveMoneyDataManager(input) {
     let returnObj = {};
     let keys = ['title', 'description', 'backgroundImage'];
 
@@ -49,21 +70,54 @@ function SaveMoneyDataManager(input) {
     return returnObj;
 }
 
-function TestimonialsDataManager(input) {
-    // console.log('TestimonialsDataManager ----- ', input);
+export function TestimonialsDataManager(input) {
+    let returnObj = {};
+    let keys = ['title', 'description', 'backgroundImage', 'testimonials'];
+
+    keys.forEach((key) => {
+        if (input[key] && key === 'testimonials') {
+            let val = input[key];
+            
+            returnObj[key] = TestimonialDetailsDataManager(val);
+        } else if (input[key]) {
+            returnObj[key] = input[key];
+        }
+    });
+    
+    return returnObj;
 }
 
-function HomeDeliveryPromotionDataManager(input) {
-    // console.log('HomeDeliveryPromotionDataManager ----- ', input);
+export function HomeDeliveryPromotionDataManager(input) {
+    let returnObj = {};
+    let keys = ['title', 'subtitle', 'backgroundImage', 'Icons'];
+
+    keys.forEach((key) => {
+        if (input[key] && key === 'Icons') {
+            let val = input[key];
+            
+            returnObj['icons'] = IconDataManager(val);
+        } else if (input[key]) {
+            returnObj[key] = input[key];
+        }
+    });
+    
+    return returnObj;
 }
 
-function HomeDeliverySignupDataManager(input) {
-    // console.log('HomeDeliverySignupDataManager ----- ', input);
+export function HomeDeliverySignupDataManager(input) {
+    let returnObj = {};
+    let keys = ['title', 'subtitle', 'backgroundImage', 'buttonText'];
+
+    keys.forEach((key) => {
+        if (input[key]) {
+            returnObj[key] = input[key];
+        }
+    });
+    
+    return returnObj;
 }
 
 export function RetailToMailDataManager(input) {
-    console.log('RetailToMailDataManager ----- ', input);
-
     let currentState = {};
     if (input && Object.keys(input).length > 0) {
         var keys = Object.keys(input);
