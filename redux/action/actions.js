@@ -2,6 +2,7 @@ import {Action} from 'redux';
 
 export const ON_INCREMENT_ACTION_TYPE = 'INCREMENT';
 export const ON_DECREMENT_ACTION_TYPE = 'DECREMENT';
+export const FETCH_CONTENT_ACTION_TYPE = 'retailToMail/fetchRetailToMailPageContent';
 
 export function onIncrementActionCreator(payload) {
 	return { type: ON_INCREMENT_ACTION_TYPE, payload: payload };

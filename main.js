@@ -8,7 +8,11 @@ import createSagaMiddleware from 'redux-saga'
 import {
   onIncrementActionCreator,
   onDecrementActionCreator
-} from './actions'
+} from './redux/action/actions'
+
+import {
+  fetchRetailToMailActionCreator
+} from './retailToMail/redux/actions/index';
 
 import rootReducer from './rootReducer';
 import Counter from './Counter'
@@ -35,13 +39,21 @@ const decre = () => {
     }));
 }
 
+const getRetailToMailContent = () => {
+    store.dispatch(fetchRetailToMailActionCreator());
+};
+
+// store.dispatch(fetchRetailToMailActionCreator());
+
 function render() {
   ReactDOM.render(
     <Counter
       value={store.getState().counter}
       tealium={store.getState().analytics}
+      pageContent={store.getState().retailToMailContent}
       onIncrement={() => incre()}
       onDecrement={() => decre()}
+      getContent={() => getRetailToMailContent()}
       onIncrementAsync={() => action('INCREMENT_ASYNC')}/>,
     document.getElementById('root')
   )

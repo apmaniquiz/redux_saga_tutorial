@@ -1,7 +1,7 @@
 import {
     ON_INCREMENT_ACTION_TYPE,
     ON_DECREMENT_ACTION_TYPE
-} from './actions';
+} from '../../redux/action/actions';
 
 export default function counter(state = 0, action) {
     switch (action.type) {

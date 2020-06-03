@@ -1,5 +1,9 @@
 import { all, call, delay, put, takeEvery } from 'redux-saga/effects'
 
+import {
+  retailToMailFlow
+} from './retailToMail/redux/actions/index';
+
 export function* helloSaga() {
   console.log('Hello Saga!');
 }
@@ -8,5 +12,6 @@ export function* helloSaga() {
 export default function* rootSaga() {
   yield all([
     call(helloSaga),
+    // call(retailToMailFlow),
   ])
 }

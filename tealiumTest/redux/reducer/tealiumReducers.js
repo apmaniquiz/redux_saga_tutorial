@@ -1,7 +1,7 @@
 import {
     ON_INCREMENT_ACTION_TYPE,
     ON_DECREMENT_ACTION_TYPE
-} from '../../../actions';
+} from '../../../redux/action/actions';
 
 import {
     getDefaultTealiumState
@@ -10,14 +10,15 @@ import {
 
 // Reusing the same actions from actions.js
 export default function counter(state = getDefaultTealiumState(), action) {
+    let defaultState = {...state, ...action.payload};
     switch (action.type) {
         case ON_INCREMENT_ACTION_TYPE:
-            return state;
+            return defaultState;
         case 'INCREMENT_IF_ODD':
-            return state
+            return defaultState;
         case ON_DECREMENT_ACTION_TYPE:
-            return state
+            return defaultState;
         default:
-            return state
+            return defaultState;
   }
 }

@@ -1,5 +1,5 @@
 /*eslint-disable no-unused-vars */
-import React, { Component, PropTypes, useEffect } from 'react'
+import React from 'react'
 
 class Counter extends React.Component {
   constructor(props) {
@@ -9,7 +9,11 @@ class Counter extends React.Component {
   componentDidUpdate(prevProps) {
     console.log('PREV PROPS ', prevProps);
     console.log('THIS PROPS ', this.props);
+
+    console.log('THIS PROPS retailToMailContent ', this.props.pageContent);
   }
+
+  
 
   render() {
       return (
@@ -26,6 +30,9 @@ class Counter extends React.Component {
             <div>
               Clicked: {this.props.value} times
             </div>
+            <button onClick={this.props.getContent}>
+              GET CONTENT
+            </button>
           </div>
       );
     }
