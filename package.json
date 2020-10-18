@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/yelouafi/redux-saga-beginner-tutorial.git"
   },
-  "author": "Yassine ELOUAFI <yelouafi@gmail.com>",
+  "author": "Anthony Maniquiz <a.maniquiz@yahoo.com>",
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "6.3.14",
